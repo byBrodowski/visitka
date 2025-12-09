@@ -45,7 +45,6 @@
       align-items: center;
       justify-content: center;
       padding: 24px;
-      /* Раніше було overflow: hidden; через це не працював скрол */
     }
 
     body::before {
@@ -76,7 +75,7 @@
       position: relative;
       max-width: 860px;
       width: 100%;
-      margin-block: 24px; /* щоб було місце зверху і знизу на мобілці */
+      margin-block: 24px;
     }
 
     .card-shell::before {
@@ -153,7 +152,7 @@
       position: relative;
       flex: 0 0 220px;
       max-width: 220px;
-      aspect-ratio: 16 / 9; /* під відео формату 16:9 */
+      aspect-ratio: 9 / 16; /* під вертикальне відео 9:16, щоб не було обрізання */
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid rgba(148, 163, 184, 0.35);
@@ -391,7 +390,7 @@
     /* Адаптивність */
     @media (max-width: 720px) {
       body {
-        align-items: flex-start; /* щоб картка починалася зверху і можна було скролити вниз */
+        align-items: flex-start;
         padding: 16px;
       }
 
@@ -439,9 +438,9 @@
     <section class="card" aria-label="Візитна картка">
       <div class="photo-wrap">
         <iframe
-          src="https://app.heygen.com/embedded-player/75a4d08f93ff4273903d37ed43316632"
+          src="https://app.heygen.com/embedded-player/75a4d08f93ff4273903d37ed43316632?autoplay=1&muted=1&loop=1"
           title="HeyGen video player"
-          allow="encrypted-media; fullscreen;"
+          allow="autoplay; encrypted-media; fullscreen;"
           allowfullscreen
         ></iframe>
 
