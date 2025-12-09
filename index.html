@@ -153,7 +153,7 @@
       position: relative;
       flex: 0 0 220px;
       max-width: 220px;
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 16 / 9; /* під відео формату 16:9 */
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid rgba(148, 163, 184, 0.35);
@@ -189,6 +189,14 @@
       pointer-events: none;
     }
 
+    /* Стилі для вбудованого відео */
+    .photo-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
     .photo-wrap img {
       width: 100%;
       height: 100%;
@@ -214,6 +222,7 @@
       align-items: center;
       gap: 6px;
       backdrop-filter: blur(10px);
+      z-index: 2;
     }
 
     .tag-dot {
@@ -392,7 +401,7 @@
       }
 
       .photo-wrap {
-        max-width: 200px;
+        max-width: 260px;
         align-self: center;
       }
 
@@ -412,7 +421,7 @@
       }
 
       .photo-wrap {
-        max-width: 180px;
+        max-width: 240px;
       }
 
       .name {
@@ -429,7 +438,13 @@
   <main class="card-shell">
     <section class="card" aria-label="Візитна картка">
       <div class="photo-wrap">
-        <img src="image/photo.jpg" alt="Фото Бродовського Євгенія Володимировича" />
+        <iframe
+          src="https://app.heygen.com/embedded-player/75a4d08f93ff4273903d37ed43316632"
+          title="HeyGen video player"
+          allow="encrypted-media; fullscreen;"
+          allowfullscreen
+        ></iframe>
+
         <div class="tag-pill">
           <span class="tag-dot"></span>
           <span>Особиста візитка</span>
