@@ -1,537 +1,555 @@
 <!DOCTYPE html>
 <html lang="uk">
-<head>
-  <meta charset="UTF-8" />
-  <title>Візитка — Бродовський Євгеній Володимирович</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <title>Візитка — Бродовський Євгеній Володимирович</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
-    rel="stylesheet"
-  />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
-    :root {
-      --bg-gradient-start: #050816;
-      --bg-gradient-end: #111827;
-      --accent: #e30613;
-      --accent-soft: #f97373;
-      --card-bg: rgba(15, 23, 42, 0.92);
-      --text-main: #f9fafb;
-      --text-muted: #9ca3af;
-      --border-light: rgba(249, 250, 251, 0.08);
-      --shadow-strong: 0 24px 60px rgba(0, 0, 0, 0.7);
-      --radius-xl: 24px;
-      --transition-fast: 220ms ease-out;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      min-height: 100vh;
-      margin: 0;
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-      color: var(--text-main);
-      background:
-        radial-gradient(circle at top left, #1f2937 0, transparent 55%),
-        radial-gradient(circle at bottom right, #111827 0, transparent 55%),
-        linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      width: 480px;
-      height: 480px;
-      background: radial-gradient(circle, rgba(227, 6, 19, 0.22), transparent 60%);
-      top: -120px;
-      right: -60px;
-      filter: blur(4px);
-      opacity: 0.9;
-      pointer-events: none;
-      animation: glowMove 10s ease-in-out infinite alternate;
-      z-index: -1;
-    }
-
-    @keyframes glowMove {
-      0% {
-        transform: translate3d(0, 0, 0) scale(1);
+    <style>
+      :root {
+        --bg-gradient-start: #050816;
+        --bg-gradient-end: #111827;
+        --accent: #e30613;
+        --accent-soft: #f97373;
+        --card-bg: rgba(15, 23, 42, 0.92);
+        --text-main: #f9fafb;
+        --text-muted: #9ca3af;
+        --border-light: rgba(249, 250, 251, 0.08);
+        --shadow-strong: 0 24px 60px rgba(0, 0, 0, 0.7);
+        --radius-xl: 24px;
+        --transition-fast: 220ms ease-out;
       }
-      100% {
-        transform: translate3d(-40px, 40px, 0) scale(1.1);
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
-    }
 
-    .card-shell {
-      position: relative;
-      max-width: 860px;
-      width: 100%;
-      margin-block: 24px;
-    }
-
-    .card-shell::before {
-      content: "";
-      position: absolute;
-      inset: -2px;
-      background: linear-gradient(
-        135deg,
-        rgba(227, 6, 19, 0.9),
-        rgba(248, 113, 113, 0.5),
-        rgba(148, 163, 184, 0.7)
-      );
-      border-radius: calc(var(--radius-xl) + 2px);
-      opacity: 0;
-      transition: opacity var(--transition-fast);
-      filter: blur(1px);
-    }
-
-    .card {
-      position: relative;
-      display: flex;
-      gap: 28px;
-      padding: 26px 30px;
-      border-radius: var(--radius-xl);
-      background: linear-gradient(
-          135deg,
-          rgba(15, 23, 42, 0.96),
-          rgba(15, 23, 42, 0.96)
-        ),
-        radial-gradient(circle at top left, rgba(148, 163, 184, 0.16), transparent 60%);
-      border: 1px solid var(--border-light);
-      box-shadow: var(--shadow-strong);
-      backdrop-filter: blur(18px);
-      align-items: center;
-      overflow: hidden;
-      transform-origin: center;
-      animation: cardEnter 700ms cubic-bezier(0.22, 0.7, 0.26, 1.02);
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        circle at top left,
-        rgba(148, 163, 184, 0.15),
-        transparent 60%
-      );
-      opacity: 0.4;
-      pointer-events: none;
-    }
-
-    .card-shell:hover .card {
-      transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
-    }
-
-    .card-shell:hover::before {
-      opacity: 1;
-    }
-
-    @keyframes cardEnter {
-      from {
-        opacity: 0;
-        transform: translateY(18px) scale(0.98);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    .photo-wrap {
-      position: relative;
-      flex: 0 0 220px;
-      max-width: 220px;
-      aspect-ratio: 9 / 16; /* під вертикальне відео 9:16, щоб не було обрізання */
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
-      isolation: isolate;
-      background: radial-gradient(circle at 20% 0, #1f2937, #020617);
-      /* transform: translateY(0); */
-     /* animation: photoFloat 5s ease-in-out infinite alternate; */
-    }
-
-    @keyframes photoFloat {
-      0% {
-        transform: translateY(0);
-      }
-      100% {
-        transform: translateY(-6px);
-      }
-    }
-
-    .photo-wrap::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        160deg,
-        rgba(249, 250, 251, 0.2),
-        transparent 45%,
-        transparent 60%,
-        rgba(15, 23, 42, 0.9)
-      );
-      mix-blend-mode: screen;
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    /* Стилі для вбудованого відео */
-    .photo-wrap iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-    }
-
-    .photo-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: saturate(1.05) contrast(1.02);
-      transform: scale(1.02);
-    }
-
-    .tag-pill {
-      position: absolute;
-      left: 16px;
-      bottom: 16px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(248, 250, 252, 0.14);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      backdrop-filter: blur(10px);
-      z-index: 2;
-    }
-
-    .tag-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 14px rgba(227, 6, 19, 0.7);
-    }
-
-    .info {
-      position: relative;
-      flex: 1 1 auto;
-      z-index: 1;
-    }
-
-    .name-block {
-      margin-bottom: 14px;
-    }
-
-    .name {
-      font-size: clamp(22px, 3vw, 26px);
-      font-weight: 600;
-      line-height: 1.25;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-    }
-
-    .underline-accent {
-      margin-top: 8px;
-      width: 82px;
-      height: 3px;
-      border-radius: 999px;
-      background: linear-gradient(
-        90deg,
-        var(--accent),
-        var(--accent-soft),
-        rgba(248, 250, 252, 0.1)
-      );
-      position: relative;
-      overflow: hidden;
-    }
-
-    .underline-accent::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        90deg,
-        transparent 0,
-        rgba(248, 250, 252, 0.9) 40%,
-        transparent 80%
-      );
-      transform: translateX(-100%);
-      animation: shimmer 2200ms ease-in-out infinite;
-    }
-
-    @keyframes shimmer {
-      0% {
-        transform: translateX(-120%);
-      }
-      100% {
-        transform: translateX(120%);
-      }
-    }
-
-    .position {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(248, 250, 252, 0.16);
-      background: radial-gradient(circle at 0 0, rgba(248, 250, 252, 0.15), transparent 60%);
-      margin-bottom: 18px;
-      color: var(--text-muted);
-    }
-
-    .badge-icon {
-      width: 16px;
-      height: 16px;
-      border-radius: 999px;
-      background: radial-gradient(circle, var(--accent), var(--accent-soft));
-      box-shadow: 0 0 16px rgba(227, 6, 19, 0.8);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      color: #f9fafb;
-    }
-
-    .contacts {
-      list-style: none;
-      display: grid;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .contacts-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--text-main);
-    }
-
-    .icon-pill {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: radial-gradient(circle at 30% 0, #1f2937, #020617);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
-    }
-
-    .icon-pill svg {
-      width: 16px;
-      height: 16px;
-      color: var(--accent-soft);
-    }
-
-    .contacts-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--text-muted);
-    }
-
-    .contacts-text {
-      font-size: 14px;
-      font-weight: 400;
-    }
-
-    .footer-note {
-      margin-top: 12px;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      opacity: 0.9;
-    }
-
-    .footer-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.7);
-    }
-
-    /* Адаптивність */
-    @media (max-width: 720px) {
       body {
-        align-items: flex-start;
-        padding: 16px;
+        min-height: 100vh;
+        margin: 0;
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        color: var(--text-main);
+        background:
+          radial-gradient(circle at top left, #1f2937 0, transparent 55%),
+          radial-gradient(circle at bottom right, #111827 0, transparent 55%),
+          linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        /* Раніше було overflow: hidden; через це не працював скрол */
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        width: 480px;
+        height: 480px;
+        background: radial-gradient(
+          circle,
+          rgba(227, 6, 19, 0.22),
+          transparent 60%
+        );
+        top: -120px;
+        right: -60px;
+        filter: blur(4px);
+        opacity: 0.9;
+        pointer-events: none;
+        animation: glowMove 10s ease-in-out infinite alternate;
+        z-index: -1;
+      }
+
+      @keyframes glowMove {
+        0% {
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+        100% {
+          transform: translate3d(-40px, 40px, 0) scale(1.1);
+        }
+      }
+
+      .card-shell {
+        position: relative;
+        max-width: 860px;
+        width: 100%;
+        margin-block: 24px; /* щоб було місце зверху і знизу на мобілці */
+      }
+
+      .card-shell::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        background: linear-gradient(
+          135deg,
+          rgba(227, 6, 19, 0.9),
+          rgba(248, 113, 113, 0.5),
+          rgba(148, 163, 184, 0.7)
+        );
+        border-radius: calc(var(--radius-xl) + 2px);
+        opacity: 0;
+        transition: opacity var(--transition-fast);
+        filter: blur(1px);
       }
 
       .card {
-        flex-direction: column;
-        padding: 22px 18px;
+        position: relative;
+        display: flex;
+        gap: 28px;
+        padding: 26px 30px;
+        border-radius: var(--radius-xl);
+        background:
+          linear-gradient(
+            135deg,
+            rgba(15, 23, 42, 0.96),
+            rgba(15, 23, 42, 0.96)
+          ),
+          radial-gradient(
+            circle at top left,
+            rgba(148, 163, 184, 0.16),
+            transparent 60%
+          );
+        border: 1px solid var(--border-light);
+        box-shadow: var(--shadow-strong);
+        backdrop-filter: blur(18px);
+        align-items: center;
+        overflow: hidden;
+        transform-origin: center;
+        animation: cardEnter 700ms cubic-bezier(0.22, 0.7, 0.26, 1.02);
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at top left,
+          rgba(148, 163, 184, 0.15),
+          transparent 60%
+        );
+        opacity: 0.4;
+        pointer-events: none;
+      }
+
+      .card-shell:hover .card {
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
+      }
+
+      .card-shell:hover::before {
+        opacity: 1;
+      }
+
+      @keyframes cardEnter {
+        from {
+          opacity: 0;
+          transform: translateY(18px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
       }
 
       .photo-wrap {
-        max-width: 260px;
-        align-self: center;
+        position: relative;
+        flex: 0 0 220px;
+        max-width: 220px;
+        aspect-ratio: 16 / 9; /* під відео формату 16:9 */
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
+        isolation: isolate;
+        background: radial-gradient(circle at 20% 0, #1f2937, #020617);
+        transform: translateY(0);
+        animation: photoFloat 5s ease-in-out infinite alternate;
+      }
+
+      @keyframes photoFloat {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(-6px);
+        }
+      }
+
+      .photo-wrap::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          160deg,
+          rgba(249, 250, 251, 0.2),
+          transparent 45%,
+          transparent 60%,
+          rgba(15, 23, 42, 0.9)
+        );
+        mix-blend-mode: screen;
+        opacity: 0.7;
+        pointer-events: none;
+      }
+
+      /* Стилі для вбудованого відео */
+      .photo-wrap iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+      }
+
+      .photo-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: saturate(1.05) contrast(1.02);
+        transform: scale(1.02);
+      }
+
+      .tag-pill {
+        position: absolute;
+        left: 16px;
+        bottom: 16px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(248, 250, 252, 0.14);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        backdrop-filter: blur(10px);
+        z-index: 2;
+      }
+
+      .tag-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 14px rgba(227, 6, 19, 0.7);
       }
 
       .info {
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      body {
-        padding: 12px;
+        position: relative;
+        flex: 1 1 auto;
+        z-index: 1;
       }
 
-      .card {
-        padding: 18px 14px;
-        gap: 18px;
-      }
-
-      .photo-wrap {
-        max-width: 240px;
+      .name-block {
+        margin-bottom: 14px;
       }
 
       .name {
-        font-size: 20px;
+        font-size: clamp(22px, 3vw, 26px);
+        font-weight: 600;
+        line-height: 1.25;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+      }
+
+      .underline-accent {
+        margin-top: 8px;
+        width: 82px;
+        height: 3px;
+        border-radius: 999px;
+        background: linear-gradient(
+          90deg,
+          var(--accent),
+          var(--accent-soft),
+          rgba(248, 250, 252, 0.1)
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .underline-accent::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          transparent 0,
+          rgba(248, 250, 252, 0.9) 40%,
+          transparent 80%
+        );
+        transform: translateX(-100%);
+        animation: shimmer 2200ms ease-in-out infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-120%);
+        }
+        100% {
+          transform: translateX(120%);
+        }
+      }
+
+      .position {
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--text-muted);
+        margin-bottom: 18px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(248, 250, 252, 0.16);
+        background: radial-gradient(
+          circle at 0 0,
+          rgba(248, 250, 252, 0.15),
+          transparent 60%
+        );
+        margin-bottom: 18px;
+        color: var(--text-muted);
+      }
+
+      .badge-icon {
+        width: 16px;
+        height: 16px;
+        border-radius: 999px;
+        background: radial-gradient(circle, var(--accent), var(--accent-soft));
+        box-shadow: 0 0 16px rgba(227, 6, 19, 0.8);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        color: #f9fafb;
+      }
+
+      .contacts {
+        list-style: none;
+        display: grid;
+        gap: 10px;
+        margin-bottom: 10px;
       }
 
       .contacts-item {
-        align-items: flex-start;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        color: var(--text-main);
       }
-    }
-  </style>
-</head>
-<body>
-  <main class="card-shell">
-    <section class="card" aria-label="Візитна картка">
-      <div class="photo-wrap">
-        <iframe
-          src="https://app.heygen.com/embedded-player/75a4d08f93ff4273903d37ed43316632?autoplay=1&muted=1&loop=1"
-          title="HeyGen video player"
-          allow="autoplay; encrypted-media; fullscreen;"
-          allowfullscreen
-        ></iframe>
 
-        <div class="tag-pill">
-          <span class="tag-dot"></span>
-          <span>Особиста візитка</span>
+      .icon-pill {
+        width: 32px;
+        height: 32px;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.5);
+        background: radial-gradient(circle at 30% 0, #1f2937, #020617);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+      }
+
+      .icon-pill svg {
+        width: 16px;
+        height: 16px;
+        color: var(--accent-soft);
+      }
+
+      .contacts-label {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--text-muted);
+      }
+
+      .contacts-text {
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      .footer-note {
+        margin-top: 12px;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        opacity: 0.9;
+      }
+
+      .footer-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: rgba(148, 163, 184, 0.7);
+      }
+
+      /* Адаптивність */
+      @media (max-width: 720px) {
+        body {
+          align-items: flex-start; /* щоб картка починалася зверху і можна було скролити вниз */
+          padding: 16px;
+        }
+
+        .card {
+          flex-direction: column;
+          padding: 22px 18px;
+        }
+
+        .photo-wrap {
+          max-width: 260px;
+          align-self: center;
+        }
+
+        .info {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding: 12px;
+        }
+
+        .card {
+          padding: 18px 14px;
+          gap: 18px;
+        }
+
+        .photo-wrap {
+          max-width: 240px;
+        }
+
+        .name {
+          font-size: 20px;
+        }
+
+        .contacts-item {
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card-shell">
+      <section class="card" aria-label="Візитна картка">
+        <div class="photo-wrap">
+          <iframe
+            src="https://app.heygen.com/embedded-player/75a4d08f93ff4273903d37ed43316632"
+            title="HeyGen video player"
+            allow="encrypted-media; fullscreen;"
+            allowfullscreen
+          ></iframe>
+
+          <div class="tag-pill">
+            <span class="tag-dot"></span>
+            <span>Особиста візитка</span>
+          </div>
         </div>
-      </div>
 
-      <div class="info">
-        <header class="name-block">
-          <h1 class="name">Бродовський Євгеній Володимирович</h1>
-          <div class="underline-accent"></div>
-        </header>
+        <div class="info">
+          <header class="name-block">
+            <h1 class="name">Бродовський Євгеній Володимирович</h1>
+            <div class="underline-accent"></div>
+          </header>
 
-        <p class="position">Фахівець банку ПУМБ</p>
+          <p class="position">Фахівець банку ПУМБ</p>
 
-        <div class="badge">
-          <span class="badge-icon">★</span>
-          <span>Професійна підтримка та сервіс для клієнтів</span>
+          <div class="badge">
+            <span class="badge-icon">★</span>
+            <span>Професійна підтримка та сервіс для клієнтів</span>
+          </div>
+
+          <ul class="contacts">
+            <li class="contacts-item">
+              <div class="icon-pill" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M7.5 3.75 5.75 5.5c-.5.5-.75 1.5-.25 2.5a26 26 0 0 0 10.5 10.5c1 .5 2 .25 2.5-.25l1.75-1.75a1 1 0 0 0 0-1.5l-3.25-1.9a1 1 0 0 0-1.15.1l-1.1 1a.7.7 0 0 1-.75.1 12.8 12.8 0 0 1-4.7-4.7.7.7 0 0 1 .1-.75l1-1.1a1 1 0 0 0 .1-1.15L9 3.75a1 1 0 0 0-1.5 0Z"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <div>
+                <div class="contacts-label">Телефон</div>
+                <div class="contacts-text">+38077 777 77 77</div>
+              </div>
+            </li>
+
+            <li class="contacts-item">
+              <div class="icon-pill" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4.75 19.25h14.5M6.25 10.75h2.5v5.5h-2.5v-5.5Zm4.5 0h2.5v5.5h-2.5v-5.5Zm4.5 0h2.5v5.5h-2.5v-5.5ZM4.5 9.25 12 4.25l7.5 5v.5H4.5v-.5Z"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <div>
+                <div class="contacts-label">Організація</div>
+                <div class="contacts-text">
+                  Перший Український Міжнародний Банк (ПУМБ)
+                </div>
+              </div>
+            </li>
+
+            <li class="contacts-item">
+              <div class="icon-pill" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 4.75a5 5 0 0 0-5 5c0 3.5 3.7 6.8 4.6 7.53.24.19.56.19.8 0 .9-.73 4.6-4.03 4.6-7.53a5 5 0 0 0-5-5Z"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M12 11.25a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5Z"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <div>
+                <div class="contacts-label">Адреса</div>
+                <div class="contacts-text">
+                  вул. Раїси Окіпної, 8-Б, м. Київ
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="footer-note">
+            <span class="footer-dot"></span>
+            <span>Стабільність, довіра та сучасний банківський сервіс</span>
+          </div>
         </div>
-
-        <ul class="contacts">
-          <li class="contacts-item">
-            <div class="icon-pill" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M7.5 3.75 5.75 5.5c-.5.5-.75 1.5-.25 2.5a26 26 0 0 0 10.5 10.5c1 .5 2 .25 2.5-.25l1.75-1.75a1 1 0 0 0 0-1.5l-3.25-1.9a1 1 0 0 0-1.15.1l-1.1 1a.7.7 0 0 1-.75.1 12.8 12.8 0 0 1-4.7-4.7.7.7 0 0 1 .1-.75l1-1.1a1 1 0 0 0 .1-1.15L9 3.75a1 1 0 0 0-1.5 0Z"
-                  stroke="currentColor"
-                  stroke-width="1.6"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
-            <div>
-              <div class="contacts-label">Телефон</div>
-              <div class="contacts-text">+38077 777 77 77</div>
-            </div>
-          </li>
-
-          <li class="contacts-item">
-            <div class="icon-pill" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M4.75 19.25h14.5M6.25 10.75h2.5v5.5h-2.5v-5.5Zm4.5 0h2.5v5.5h-2.5v-5.5Zm4.5 0h2.5v5.5h-2.5v-5.5ZM4.5 9.25 12 4.25l7.5 5v.5H4.5v-.5Z"
-                  stroke="currentColor"
-                  stroke-width="1.6"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
-            <div>
-              <div class="contacts-label">Організація</div>
-              <div class="contacts-text">Перший Український Міжнародний Банк (ПУМБ)</div>
-            </div>
-          </li>
-
-          <li class="contacts-item">
-            <div class="icon-pill" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 4.75a5 5 0 0 0-5 5c0 3.5 3.7 6.8 4.6 7.53.24.19.56.19.8 0 .9-.73 4.6-4.03 4.6-7.53a5 5 0 0 0-5-5Z"
-                  stroke="currentColor"
-                  stroke-width="1.6"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M12 11.25a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5Z"
-                  stroke="currentColor"
-                  stroke-width="1.6"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </div>
-            <div>
-              <div class="contacts-label">Адреса</div>
-              <div class="contacts-text">вул. Раїси Окіпної, 8-Б, м. Київ</div>
-            </div>
-          </li>
-        </ul>
-
-        <div class="footer-note">
-          <span class="footer-dot"></span>
-          <span>Стабільність, довіра та сучасний банківський сервіс</span>
-        </div>
-      </div>
-    </section>
-  </main>
-</body>
+      </section>
+    </main>
+  </body>
 </html>
